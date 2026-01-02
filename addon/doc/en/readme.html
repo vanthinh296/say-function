@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Say Function 25.2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e5799 0%, #207cca 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
+        }
+        
+        h2 {
+            color: #1e5799;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+        
+        h3 {
+            color: #207cca;
+            margin: 15px 0 10px 0;
+            font-size: 1.3rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        th {
+            background-color: #1e5799;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #f0f5ff;
+        }
+        
+        .highlight {
+            background-color: #e7f3ff;
+            padding: 15px;
+            border-left: 4px solid #207cca;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .version {
+            background-color: #f0f8ff;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .version h3 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            background-color: #f0f5ff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #1e5799;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background-color: #1e5799;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Say Function</h1>
+    </header>
+    
+    <main>
+        <section id="information">
+            <h2>Information</h2>
+            <p><strong>Author:</strong> Smart Thinh Production</p>
+            <p><strong>Compatibility:</strong> NVDA version 2019.3 and beyond</p>
+        </section>
+        
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>When using NVDA, common operations like Copy (Ctrl+C), Paste (Ctrl+V), Cut (Ctrl+X), Undo (Ctrl+Z), Select All (Ctrl+A), and Redo (Ctrl+Y) are performed very frequently. However, by default NVDA does not announce any notification when users press these key combinations, leading to:</p>
+            <ul>
+                <li>Not knowing whether the operation has been performed or not</li>
+                <li>Difficulty tracking text editing workflow</li>
+                <li>Reduced convenience and work efficiency, especially when quick operations are needed</li>
+            </ul>
+            <p>To solve this problem, I have developed this add-on.</p>
+        </section>
+        
+        <section id="purpose">
+            <h2>Purpose of the Add-on</h2>
+            <p>The add-on is created to:</p>
+            <ul>
+                <li>Clearly announce each time the user performs cut, copy, paste, undo, select all, or redo operations.</li>
+                <li>Help NVDA users immediately confirm that the operation has been executed.</li>
+                <li>Provide special support for new users or those who need clear audio feedback during text editing.</li>
+                <li>Increase work speed and reduce errors during content editing.</li>
+            </ul>
+        </section>
+        
+        <section id="shortcuts">
+            <h2>Supported Shortcuts</h2>
+            <p>The add-on will announce a notification each time the user presses one of the following keys:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Key Combination</th>
+                        <th>Function</th>
+                        <th>Announcement</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ctrl + C</td>
+                        <td>Copy</td>
+                        <td>"Copied"</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + V</td>
+                        <td>Paste</td>
+                        <td>"Pasted"</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + X</td>
+                        <td>Cut</td>
+                        <td>"Cut"</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Z</td>
+                        <td>Undo</td>
+                        <td>"Undone"</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Y</td>
+                        <td>Redo</td>
+                        <td>"Redone"</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + A</td>
+                        <td>Select All</td>
+                        <td>"All selected"</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="highlight">All notifications are read by NVDA immediately and do not conflict with default shortcuts.</p>
+        </section>
+        
+        <section id="how-it-works">
+            <h2>How It Works</h2>
+            <p>This add-on listens for global keypress events in NVDA. When it detects that a key combination has been pressed, the add-on will:</p>
+            <ol>
+                <li>Execute the system's default action (copy, paste, etc.)</li>
+                <li>Trigger sound playback or read a notification using the NVDA voice</li>
+                <li>Ensure it does not change the standard behavior of the application you are using</li>
+            </ol>
+            <p>This helps users receive immediate feedback without affecting their workflow.</p>
+        </section>
+        
+        <section id="features">
+            <h2>Highlight Features</h2>
+            <ul>
+                <li>Works in all applications: Word, Notepad, browsers, code editors, etc.</li>
+                <li>Fast and stable response</li>
+                <li>Fully compatible with the latest NVDA</li>
+                <li>Lightweight, does not slow down the computer</li>
+                <li>Does not overlap with any other add-ons or shortcuts</li>
+            </ul>
+        </section>
+        
+        <section id="changelog">
+            <h2>Change Log</h2>
+            
+            <div class="version">
+                <h3>Version: 25.2</h3>
+                <ul>
+                    <li>Added translation support. Currently, only Vietnamese language is available</li>
+                    <li>Added a feature to play sounds when keyboard shortcuts are pressed. You can enable this feature through NVDA's Settings. To enable this feature, follow these steps:
+                        <ol>
+                            <li>First, open the NVDA menu.</li>
+                            <li>Next, go to 'Settings'.</li>
+                            <li>Then, find the 'Say Function' section.</li>
+                            <li>Within this section, locate and enable the option 'Play different sound effects when performing keyboard shortcuts'.</li>
+                            <li>Finally, press 'OK' or 'Enter' to save your configuration.</li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="version">
+                <h3>Version: 1.1</h3>
+                <ul>
+                    <li>Fix error of not being able to copy or cut in web browser</li>
+                </ul>
+            </div>
+            
+            <div class="version">
+                <h3>Version: 1.0</h3>
+                <ul>
+                    <li>Initial Release</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2>Contact the Developer</h2>
+            <p>For feedback, support, or inquiries, please contact:</p>
+            <div class="contact-info">
+                <a href="https://facebook.com/smartthinh" class="contact-link" target="_blank">Facebook</a>
+                <a href="https://t.me/smartthinh" class="contact-link" target="_blank">Telegram</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

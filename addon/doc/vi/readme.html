@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đọc chức năng 25.2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e5799 0%, #207cca 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
+        }
+        
+        h2 {
+            color: #1e5799;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+        
+        h3 {
+            color: #207cca;
+            margin: 15px 0 10px 0;
+            font-size: 1.3rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+        }
+        
+        th {
+            background-color: #1e5799;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #f0f5ff;
+        }
+        
+        .highlight {
+            background-color: #e7f3ff;
+            padding: 15px;
+            border-left: 4px solid #207cca;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .version {
+            background-color: #f0f8ff;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .version h3 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            background-color: #f0f5ff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #1e5799;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background-color: #1e5799;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Đọc chức năng</h1>
+    </header>
+    
+    <main>
+        <section id="information">
+            <h2>Thông tin</h2>
+            <p><strong>Tác giả:</strong> Smart Thinh Production</p>
+            <p><strong>Tương thích:</strong> NVDA phiên bản 2019.3 trở lên</p>
+        </section>
+        
+        <section id="introduction">
+            <h2>Giới thiệu</h2>
+            <p>Khi sử dụng NVDA, các thao tác thông thường như Sao chép (Ctrl+C), Dán (Ctrl+V), Cắt (Ctrl+X), Hoàn tác (Ctrl+Z), Chọn tất cả (Ctrl+A) và Khôi phục (Ctrl+Y) được thực hiện rất thường xuyên. Tuy nhiên, theo mặc định NVDA không thông báo bất kỳ thông báo nào khi người dùng nhấn các tổ hợp phím này, dẫn đến:</p>
+            <ul>
+                <li>Không biết liệu thao tác đã được thực hiện hay chưa</li>
+                <li>Khó khăn trong việc theo dõi quy trình chỉnh sửa văn bản</li>
+                <li>Giảm tiện lợi và hiệu quả công việc, đặc biệt khi cần thao tác nhanh</li>
+            </ul>
+            <p>Để giải quyết vấn đề này, tôi đã phát triển add-on này.</p>
+        </section>
+        
+        <section id="purpose">
+            <h2>Mục đích của Add-on</h2>
+            <p>Add-on được tạo ra để:</p>
+            <ul>
+                <li>Thông báo rõ ràng mỗi khi người dùng thực hiện thao tác cắt, sao chép, dán, hoàn tác, chọn tất cả hoặc khôi phục.</li>
+                <li>Giúp người dùng NVDA biết rằng thao tác đã được thực hiện.</li>
+                <li>Cung cấp hỗ trợ đặc biệt cho người dùng mới hoặc những người cần phản hồi âm thanh rõ ràng trong khi chỉnh sửa văn bản.</li>
+                <li>Tăng tốc độ làm việc và giảm lỗi trong quá trình chỉnh sửa nội dung.</li>
+            </ul>
+        </section>
+        
+        <section id="shortcuts">
+            <h2>Phím tắt được hỗ trợ</h2>
+            <p>Add-on sẽ thông báo mỗi khi người dùng nhấn một trong các phím sau:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tổ hợp phím</th>
+                        <th>Chức năng</th>
+                        <th>Thông báo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ctrl + C</td>
+                        <td>Sao chép</td>
+                        <td>"Đã sao chép"</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + V</td>
+                        <td>Dán</td>
+                        <td>"Đã dán"</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + X</td>
+                        <td>Cắt</td>
+                        <td>"Đã cắt"</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Z</td>
+                        <td>Hoàn tác</td>
+                        <td>"Đã hoàn tác"</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Y</td>
+                        <td>Khôi phục</td>
+                        <td>"Đã khôi phục"</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + A</td>
+                        <td>Chọn tất cả</td>
+                        <td>"Đã chọn tất cả"</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="highlight">Tất cả thông báo được đọc bởi NVDA ngay lập tức và không xung đột với các phím tắt mặc định.</p>
+        </section>
+        
+        <section id="how-it-works">
+            <h2>Cách thức hoạt động</h2>
+            <p>Add-on này lắng nghe sự kiện nhấn phím toàn cục trong NVDA. Khi phát hiện một tổ hợp phím đã được nhấn, add-on sẽ:</p>
+            <ol>
+                <li>Thực hiện hành động mặc định của hệ thống (sao chép, dán, v.v.)</li>
+                <li>Kích hoạt phát âm thanh hoặc đọc thông báo bằng giọng nói</li>
+                <li>Đảm bảo không thay đổi hành vi tiêu chuẩn của ứng dụng bạn đang sử dụng</li>
+            </ol>
+            <p>Điều này giúp người dùng nhận được phản hồi ngay lập tức mà không ảnh hưởng đến quy trình làm việc của họ.</p>
+        </section>
+        
+        <section id="features">
+            <h2>Tính năng nổi bật</h2>
+            <ul>
+                <li>Hoạt động trong tất cả ứng dụng: Word, Notepad, trình duyệt, trình chỉnh sửa mã, v.v.</li>
+                <li>Phản hồi nhanh và ổn định</li>
+                <li>Hoàn toàn tương thích với NVDA mới nhất</li>
+                <li>Nhẹ, không làm chậm máy tính</li>
+                <li>Không chồng chéo với bất kỳ add-on hoặc phím tắt nào khác</li>
+            </ul>
+        </section>
+        
+        <section id="changelog">
+            <h2>Nhật ký thay đổi</h2>
+            
+            <div class="version">
+                <h3>Phiên bản: 25.2</h3>
+                <ul>
+                    <li>Đã thêm hỗ trợ dịch thuật. Hiện tại, chỉ có ngôn ngữ Tiếng Việt có sẵn</li>
+                    <li>Đã thêm tính năng phát âm thanh khi nhấn phím tắt. Bạn có thể bật tính năng này thông qua Cài đặt của NVDA. Để bật tính năng này, hãy làm theo các bước sau:
+                        <ol>
+                            <li>Đầu tiên, mở menu NVDA.</li>
+                            <li>Tiếp theo, đi tới 'Cài đặt'.</li>
+                            <li>Sau đó, tìm phần 'Say Function'.</li>
+                            <li>Trong phần này, tìm và bật tùy chọn 'Phát hiệu ứng âm thanh khác nhau khi thực hiện phím tắt'.</li>
+                            <li>Cuối cùng, nhấn 'OK' hoặc 'Enter' để lưu cấu hình của bạn.</li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="version">
+                <h3>Phiên bản: 1.1</h3>
+                <ul>
+                    <li>Sửa lỗi không thể sao chép hoặc cắt trong trình duyệt web</li>
+                </ul>
+            </div>
+            
+            <div class="version">
+                <h3>Phiên bản: 1.0</h3>
+                <ul>
+                    <li>Phát hành ban đầu</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2>Liên hệ nhà phát triển</h2>
+            <p>Để phản hồi, hỗ trợ hoặc thắc mắc, vui lòng liên hệ:</p>
+            <div class="contact-info">
+                <a href="https://facebook.com/smartthinh" class="contact-link" target="_blank">Facebook</a>
+                <a href="https://t.me/smartthinh" class="contact-link" target="_blank">Telegram</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
